@@ -73,6 +73,13 @@ async def developer(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     ), parse_mode=ParseMode.HTML, disable_web_page_preview=True
     )
 
+
+async def support(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(
+        text="upi : <code>prajwalpraveen2006@okaxis</code>",
+        parse_mode=ParseMode.HTML
+        )
+
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         "<b>_____Help Menu_____</b>\n\n"
@@ -80,7 +87,7 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         " ‣ <code>/help</code> - To view this help menu \n\n"
         " ‣ <code>/wa</code> - To encode a text inside a <a href="">wa.me</a> link. When opened the url, the message is already typed into the chat \n\n"
         " ‣ <code>/developer</code> - To see details about the developer of this bot \n\n"
-        " ‣ <code>/support/donate</code> - To support/donate the developer <i>(UPI)</i> \n\n"
+        " ‣ <code>/support</code> or <code>/donate</code> - To support/donate the developer <i>(UPI)</i> \n\n"
         " ",
         parse_mode=ParseMode.HTML, disable_web_page_preview=True
     )
@@ -93,6 +100,8 @@ def main():
     app.add_handler(CommandHandler("start" , start))
     app.add_handler(CommandHandler("help" , help))
     app.add_handler(CommandHandler("developer" , developer))
+    app.add_handler(CommandHandler("support" , support))
+    app.add_handler(CommandHandler("donate" , support))
 
     wa_conv = ConversationHandler(
     entry_points=[CommandHandler("wa", wa_encode_handler)],
